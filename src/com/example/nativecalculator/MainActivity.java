@@ -2,81 +2,178 @@ package com.example.nativecalculator;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 //import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+public class MainActivity extends Activity {
+    Button button0 , button1 , button2 , button3 , button4 , button5 , button6 ,
+            button7 , button8 , button9 , buttonAdd , buttonSub , buttonDivision ,
+            buttonMul , button10 , buttonC , buttonEqual ;
+    EditText edt1 ;
+    float mValueOne , mValueTwo ;
+    boolean mAddition , mSubtract ,mMultiplication ,mDivision ;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button0 = (Button) findViewById(R.id.button0);
+        button1 = (Button) findViewById(R.id.button1);
+        button2 = (Button) findViewById(R.id.button2);
+        button3 = (Button) findViewById(R.id.button3);
+        button4 = (Button) findViewById(R.id.button4);
+        button5 = (Button) findViewById(R.id.button5);
+        button6 = (Button) findViewById(R.id.button6);
+        button7 = (Button) findViewById(R.id.button7);
+        button8 = (Button) findViewById(R.id.button8);
+        button9 = (Button) findViewById(R.id.button9);
+        button10 = (Button) findViewById(R.id.button10);
+        buttonAdd = (Button) findViewById(R.id.buttonadd);
+        buttonSub = (Button) findViewById(R.id.buttonsub);
+        buttonMul = (Button) findViewById(R.id.buttonmul);
+        buttonDivision = (Button) findViewById(R.id.buttondiv);
+        buttonC = (Button) findViewById(R.id.buttonC);
+        buttonEqual = (Button) findViewById(R.id.buttoneql);
+        edt1 = (EditText) findViewById(R.id.edt1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+"1");
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+"2");
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+"3");
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+"4");
+            }
+        });
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+"5");
+            }
+        });
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+"6");
+            }
+        });
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+"7");
+            }
+        });
 
-public class MainActivity extends Activity implements OnClickListener
-{
-	EditText Num1;
-	EditText Num2;
-	Button Add;
-	Button Sub;
-	Button Mul;
-	Button Div;
-	TextView Result;
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+"8");
+            }
+        });
 
-	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+"9");
+            }
+        });
+        button0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+"0");
+            }
+        });
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (edt1 == null){
+                    edt1.setText("");
+                }else {
+                    mValueOne = Float.parseFloat(edt1.getText() + "");
+                    mAddition = true;
+                    edt1.setText(null);
+                }
+            }
+        });
+        buttonSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mValueOne = Float.parseFloat(edt1.getText() + "");
+                mSubtract = true ;
+                edt1.setText(null);
+            }
+        });
+        buttonMul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mValueOne = Float.parseFloat(edt1.getText() + "");
+                mMultiplication = true ;
+                edt1.setText(null);
+            }
+        });
+        buttonDivision.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mValueOne = Float.parseFloat(edt1.getText()+"");
+                mDivision = true ;
+                edt1.setText(null);
+            }
+        });
+        buttonEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mValueTwo = Float.parseFloat(edt1.getText() + "");
 
-		Num1 = (EditText) findViewById(R.id.id1);
-		Num2 = (EditText) findViewById(R.id.id2);
-		Add = (Button) findViewById(R.id.Add);
-		Sub = (Button) findViewById(R.id.Sub);
-		Mul = (Button) findViewById(R.id.Mul);
-		Div = (Button) findViewById(R.id.Div);
-		Result = (TextView) findViewById(R.id.textView);
+                if (mAddition == true){
 
-		Add.setOnClickListener(this);
-		Sub.setOnClickListener(this);
-		Mul.setOnClickListener(this);
-		Div.setOnClickListener(this);
-	}
-
-	@Override
-	public void onClick(View v)
-	{
-
-		float num1 = 0;
-		float num2 = 0;
-		float result = 0;
-		String oper = "";
-
-		if (TextUtils.isEmpty(Num1.getText().toString())
-				|| TextUtils.isEmpty(Num2.getText().toString()))
-			return;
-
-		num1 = Float.parseFloat(Num1.getText().toString());
-		num2 = Float.parseFloat(Num2.getText().toString());
-
-		switch (v.getId())
-		{
-		case R.id.Add:
-			oper = "+";
-			result = num1 + num2;
-			break;
-		case R.id.Sub:
-			oper = "-";
-			result = num1 - num2;
-			break;
-		case R.id.Mul:
-			oper = "*";
-			result = num1 * num2;
-			break;
-		case R.id.Div:
-			oper = "/";
-			result = num1 / num2;
-			break;
-		default:
-			break;
-		}
-		Result.setText(num1 + " " + oper + " " + num2 + " = " + result);
-	}
+                    edt1.setText(mValueOne + mValueTwo +"");
+                    mAddition=false;
+                }
+                if (mSubtract == true){
+                    edt1.setText(mValueOne - mValueTwo+"");
+                    mSubtract=false;
+                }
+                if (mMultiplication == true){
+                    edt1.setText(mValueOne * mValueTwo+"");
+                    mMultiplication=false;
+                }
+                if (mDivision == true){
+                    edt1.setText(mValueOne / mValueTwo+"");
+                    mDivision=false;
+                }
+            }
+        });
+        buttonC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText("");
+            }
+        });
+        button10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt1.setText(edt1.getText()+".");
+            }
+        });
+    }
 }
+
